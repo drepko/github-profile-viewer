@@ -1,17 +1,26 @@
 import Link from 'next/link';
+import { Suspense } from 'react';
 
-const userDetails = ({ params: { name } }) => {
+import RepoList from '../../components/RepoList';
+
+const userPage = ({ params: { name } }) => {
   return (
-    <div className='card'>
-      <div className='flex w-full justify-center text-3xl font-bold'>
-        {name}
+    <section className='py-8'>
+      <div className='container'>
+        <div className='my-12 '>
+          <Link
+            href='/users'
+            className='rounded border bg-gray-100 px-3 py-1 text-sm text-gray-800'
+          >
+            Back
+          </Link>
+        </div>
+        <Suspense fallback={<div>Loading...</div>}>
+          <RepoList name={name} />
+        </Suspense>
       </div>
-
-      <Link href='/users' className='btn btn-back'>
-        GO BACK
-      </Link>
-    </div>
+    </section>
   );
 };
 
-export default userDetails;
+export default userPage;
