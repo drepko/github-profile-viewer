@@ -1,4 +1,4 @@
-# dpg-assessment
+# github-profile-viewer
 
 This app displays users from Github. It has a monorepository setup with Turborepo and shared Tailwind CSS configurations.
 
@@ -7,7 +7,7 @@ This app displays users from Github. It has a monorepository setup with Turborep
 1. Clone the repository:
 
 ```sh
-git clone https://github.com/drepko/dpg-assessment.git
+git clone https://github.com/drepko/github-profile-viewer.git
 ```
 
 2. Run `yarn install` from the root directory to install all the dependecies across the monorepo.
