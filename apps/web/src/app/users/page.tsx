@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import { Card } from 'ui';
+import { Suspense } from 'react';
 
+import UserList from '../components/UserList';
 import Search from './search';
 
 export default async function Home({
@@ -60,22 +61,12 @@ export default async function Home({
             </Link>
           </div>
         </div>
-
-        <ul
-          role='list'
-          className='grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 sm:gap-x-6 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8'
+        <Suspense
+          fallback={<div>Loading...</div>}
+          key={JSON.stringify(searchParams)}
         >
-          {data.items?.map((user) => (
-            <li key={user.id.toString()} className='relative'>
-              <Card
-                title={user.login}
-                subTitle={user.id}
-                src={user.avatar_url}
-                href={`/users/${user.login}`}
-              />
-            </li>
-          ))}
-        </ul>
+          <UserList data={data.items} />
+        </Suspense>
       </div>
     </section>
   );
