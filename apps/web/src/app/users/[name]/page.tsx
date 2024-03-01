@@ -1,19 +1,19 @@
-import Link from 'next/link';
+'use client';
+
+import { useRouter } from 'next/navigation';
 import { Suspense } from 'react';
+import { Button } from 'ui';
 
 import RepoList from '../../components/RepoList';
 
-const userPage = ({ params: { name } }) => {
+export default function UserPage({ params: { name } }) {
+  const router = useRouter();
+
   return (
     <section className='py-8'>
       <div className='container'>
         <div className='my-12 '>
-          <Link
-            href='/users'
-            className='rounded border bg-gray-100 px-3 py-1 text-sm text-gray-800'
-          >
-            Back
-          </Link>
+          <Button onClick={() => router.back()}>Back</Button>
         </div>
         <Suspense fallback={<div>Loading...</div>}>
           <RepoList name={name} />
@@ -21,6 +21,4 @@ const userPage = ({ params: { name } }) => {
       </div>
     </section>
   );
-};
-
-export default userPage;
+}
